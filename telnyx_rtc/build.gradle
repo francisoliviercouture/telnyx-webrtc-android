@@ -71,7 +71,7 @@ publishing {
 }
 
 android {
-    compileSdk 35
+    compileSdk 34
 
     defaultConfig {
         minSdkVersion 23

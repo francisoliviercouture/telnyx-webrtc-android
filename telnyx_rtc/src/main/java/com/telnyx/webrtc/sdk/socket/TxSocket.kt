@@ -276,6 +276,8 @@ class TxSocket(
                 override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
                     Logger.i(tag = "TxSocket", 
                         message = "Socket is closed: $response $t :: Will attempt to reconnect")
+                    isConnected = false
+
                     if (ongoingCall) {
                         listener.call?.setCallRecovering()
                     }

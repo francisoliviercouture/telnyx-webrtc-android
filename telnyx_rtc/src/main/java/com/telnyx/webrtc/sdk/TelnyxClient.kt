@@ -12,11 +12,12 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.telnyx.webrtc.lib.IceCandidate
+import com.telnyx.webrtc.lib.SessionDescription
 import com.telnyx.webrtc.sdk.TelnyxClient.RingtoneType.RAW
 import com.telnyx.webrtc.sdk.TelnyxClient.RingtoneType.URI
 import com.telnyx.webrtc.sdk.TelnyxClient.SpeakerMode.EARPIECE
@@ -26,20 +27,15 @@ import com.telnyx.webrtc.sdk.model.*
 import com.telnyx.webrtc.sdk.peer.Peer
 import com.telnyx.webrtc.sdk.socket.TxSocket
 import com.telnyx.webrtc.sdk.socket.TxSocketListener
-import com.telnyx.webrtc.sdk.stats.CallQualityMetrics
 import com.telnyx.webrtc.sdk.stats.WebRTCReporter
 import com.telnyx.webrtc.sdk.telnyx_rtc.BuildConfig
 import com.telnyx.webrtc.sdk.utilities.ConnectivityHelper
 import com.telnyx.webrtc.sdk.utilities.Logger
+import com.telnyx.webrtc.sdk.utilities.SdpUtils
 import com.telnyx.webrtc.sdk.utilities.TxLogger
-import com.telnyx.webrtc.sdk.utilities.encodeBase64
 import com.telnyx.webrtc.sdk.verto.receive.*
 import com.telnyx.webrtc.sdk.verto.send.*
 import kotlinx.coroutines.*
-import com.telnyx.webrtc.lib.IceCandidate
-import com.telnyx.webrtc.lib.PeerConnection
-import com.telnyx.webrtc.lib.SessionDescription
-import com.telnyx.webrtc.sdk.utilities.SdpUtils
 import java.util.*
 import kotlin.concurrent.timerTask
 
